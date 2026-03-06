@@ -1,5 +1,6 @@
 import { TopBar } from './components/TopBar';
 import { LinknestCard, type Tag } from './components/LinknestCard';
+import { Heart } from 'lucide-react';
 import './index.css';
 
 const DUMMY_LINKS = [
@@ -130,6 +131,16 @@ function App() {
             />
           ))}
         </main>
+
+        {/* Footer */}
+        <footer className="w-full flex items-center justify-center gap-1.5 py-8 text-gray-500 text-sm">
+          <span>build with</span>
+          <Heart size={14} className="text-red-500 fill-red-500" />
+          <span>by</span>
+          <a href="https://github.com/pranjl7" target="_blank" rel="noreferrer" className="hover:text-gray-300 transition-colors">
+            pranjl7
+          </a>
+        </footer>
       </div>
     </div>
   )
