@@ -2,7 +2,7 @@ import { Eye, BadgeCheck } from 'lucide-react';
 
 export type TagColor = 'pink' | 'purple' | 'orange' | 'blue' | 'green';
 
-interface Requirement {
+export interface Tag {
   name: string;
   color: TagColor;
 }
@@ -12,8 +12,8 @@ interface LinknestCardProps {
   url: string;
   status: string;
   author: string;
-  requirements: Requirement[];
-  stack: string[];
+  type: Tag;
+  tags: Tag[];
 }
 
 const colorStyles: Record<TagColor, string> = {
@@ -24,7 +24,7 @@ const colorStyles: Record<TagColor, string> = {
   green: "text-[#48bb78] border-[#48bb78]/30 bg-[#48bb78]/10",
 };
 
-export function LinknestCard({ title, url, status, author, requirements, stack }: LinknestCardProps) {
+export function LinknestCard({ title, url, status, author, type, tags }: LinknestCardProps) {
   return (
     <div className="flex flex-col p-5 rounded-2xl bg-[#111214] border border-[#2d2d33] hover:border-[#4d4d55] transition-colors w-full relative group shadow-sm hover:shadow-lg dark:shadow-none">
       
@@ -47,38 +47,31 @@ export function LinknestCard({ title, url, status, author, requirements, stack }
         Posted by <span className="text-gray-300 font-medium">{author}</span>
       </p>
 
-      {/* Requirements */}
-      {requirements && requirements.length > 0 && (
+      {/* Type */}
+      {type && (
         <div className="mb-5">
           <h4 className="text-[10px] uppercase tracking-[0.15em] font-bold text-gray-500 mb-2.5">
-            Requirements
+            Type
           </h4>
-          <div className="flex flex-wrap gap-2">
-            {requirements.map((req, idx) => (
-              <span 
-                key={idx} 
-                className={`px-2.5 py-1 rounded-md text-[11px] font-medium border ${colorStyles[req.color] || colorStyles.blue}`}
-              >
-                {req.name}
-              </span>
-            ))}
-          </div>
+          <span className={`px-2.5 py-1 rounded-md text-[11px] font-medium border inline-block ${colorStyles[type.color] || colorStyles.blue}`}>
+            {type.name}
+          </span>
         </div>
       )}
 
-      {/* Stack */}
-      {stack && stack.length > 0 && (
+      {/* Tags */}
+      {tags && tags.length > 0 && (
         <div className="mb-8">
           <h4 className="text-[10px] uppercase tracking-[0.15em] font-bold text-gray-500 mb-2.5">
-            Stack
+            Tags
           </h4>
           <div className="flex flex-wrap gap-2">
-            {stack.map((item, idx) => (
+            {tags.map((tag, idx) => (
               <span 
                 key={idx} 
-                className="px-2.5 py-1 rounded-md text-[11px] font-medium text-gray-400 bg-[#16171a] border border-[#2d2d33]"
+                className={`px-2.5 py-1 rounded-md text-[11px] font-medium border ${colorStyles[tag.color] || colorStyles.blue}`}
               >
-                {item}
+                {tag.name}
               </span>
             ))}
           </div>

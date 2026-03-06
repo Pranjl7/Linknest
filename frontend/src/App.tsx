@@ -1,6 +1,6 @@
 import { TopBar } from './components/TopBar';
 import { FloatingNav } from './components/FloatingNav';
-import { LinknestCard, type TagColor } from './components/LinknestCard';
+import { LinknestCard, type Tag } from './components/LinknestCard';
 import './index.css';
 
 const DUMMY_LINKS = [
@@ -10,12 +10,12 @@ const DUMMY_LINKS = [
     url: '#', 
     status: 'Looking for collaborators', 
     author: 'Harshit Parmar',
-    requirements: [
-      { name: 'Frontend Developer', color: 'pink' },
-      { name: 'Backend Developer', color: 'purple' },
-      { name: 'UI/UX Designer', color: 'orange' }
-    ] as { name: string, color: TagColor }[],
-    stack: ['React Native', 'Python', 'TensorFlow']
+    type: { name: 'Repository', color: 'orange' } as Tag,
+    tags: [
+      { name: 'React Native', color: 'pink' },
+      { name: 'Python', color: 'purple' },
+      { name: 'TensorFlow', color: 'blue' }
+    ] as Tag[],
   },
   { 
     id: 2, 
@@ -23,11 +23,12 @@ const DUMMY_LINKS = [
     url: '#', 
     status: 'Looking for maintainers', 
     author: 'Sarah Chen',
-    requirements: [
-      { name: 'Full Stack Developer', color: 'blue' },
-      { name: 'Database Admin', color: 'green' }
-    ] as { name: string, color: TagColor }[],
-    stack: ['Next.js', 'PostgreSQL', 'Tailwind']
+    type: { name: 'Design', color: 'blue' } as Tag,
+    tags: [
+      { name: 'Next.js', color: 'green' },
+      { name: 'PostgreSQL', color: 'purple' },
+      { name: 'Tailwind', color: 'pink' }
+    ] as Tag[],
   },
   { 
     id: 3, 
@@ -35,11 +36,12 @@ const DUMMY_LINKS = [
     url: '#', 
     status: 'Looking for contributors', 
     author: 'Alex Rivera',
-    requirements: [
-      { name: 'React Developer', color: 'pink' },
-      { name: 'Technical Writer', color: 'orange' }
-    ] as { name: string, color: TagColor }[],
-    stack: ['React', 'TypeScript', 'Storybook']
+    type: { name: 'Library', color: 'pink' } as Tag,
+    tags: [
+      { name: 'React', color: 'orange' },
+      { name: 'TypeScript', color: 'blue' },
+      { name: 'Storybook', color: 'purple' }
+    ] as Tag[],
   },
   { 
     id: 4, 
@@ -47,11 +49,12 @@ const DUMMY_LINKS = [
     url: '#', 
     status: 'Active discussion', 
     author: 'David Kim',
-    requirements: [
-      { name: 'Smart Contract Dev', color: 'purple' },
-      { name: 'Frontend Developer', color: 'pink' }
-    ] as { name: string, color: TagColor }[],
-    stack: ['Solidity', 'React', 'IPFS']
+    type: { name: 'Whitepaper', color: 'purple' } as Tag,
+    tags: [
+      { name: 'Solidity', color: 'pink' },
+      { name: 'React', color: 'blue' },
+      { name: 'IPFS', color: 'green' }
+    ] as Tag[],
   },
   { 
     id: 5, 
@@ -59,11 +62,12 @@ const DUMMY_LINKS = [
     url: '#', 
     status: 'Seeking code review', 
     author: 'Elena Rostova',
-    requirements: [
-      { name: 'Rust Developer', color: 'orange' },
-      { name: 'Performance Expert', color: 'blue' }
-    ] as { name: string, color: TagColor }[],
-    stack: ['Rust', 'Cargo', 'WASM']
+    type: { name: 'Tool', color: 'green' } as Tag,
+    tags: [
+      { name: 'Rust', color: 'orange' },
+      { name: 'Cargo', color: 'purple' },
+      { name: 'WASM', color: 'blue' }
+    ] as Tag[],
   },
   { 
     id: 6, 
@@ -71,11 +75,12 @@ const DUMMY_LINKS = [
     url: '#', 
     status: 'Looking for maintainers', 
     author: 'Michael Chang',
-    requirements: [
-      { name: 'Cloud Architect', color: 'green' },
-      { name: 'Backend Developer', color: 'purple' }
-    ] as { name: string, color: TagColor }[],
-    stack: ['AWS Lambda', 'FFmpeg', 'Node.js']
+    type: { name: 'API', color: 'pink' } as Tag,
+    tags: [
+      { name: 'AWS Lambda', color: 'orange' },
+      { name: 'FFmpeg', color: 'blue' },
+      { name: 'Node.js', color: 'green' }
+    ] as Tag[],
   },
   { 
     id: 7, 
@@ -83,12 +88,12 @@ const DUMMY_LINKS = [
     url: '#', 
     status: 'Active development', 
     author: 'Sophie Martin',
-    requirements: [
-      { name: 'AST Expert', color: 'blue' },
-      { name: 'UI Engineer', color: 'pink' },
-      { name: 'Figma Plugin Dev', color: 'orange' }
-    ] as { name: string, color: TagColor }[],
-    stack: ['TypeScript', 'Babel', 'Figma API']
+    type: { name: 'Plugin', color: 'orange' } as Tag,
+    tags: [
+      { name: 'TypeScript', color: 'blue' },
+      { name: 'Babel', color: 'purple' },
+      { name: 'Figma API', color: 'pink' }
+    ] as Tag[],
   },
   { 
     id: 8, 
@@ -96,11 +101,12 @@ const DUMMY_LINKS = [
     url: '#', 
     status: 'Looking for contributors', 
     author: 'James Wilson',
-    requirements: [
-      { name: 'Mobile Developer', color: 'green' },
-      { name: 'UX Researcher', color: 'purple' }
-    ] as { name: string, color: TagColor }[],
-    stack: ['React Native', 'SQLite', 'Zustand']
+    type: { name: 'App', color: 'blue' } as Tag,
+    tags: [
+      { name: 'React Native', color: 'green' },
+      { name: 'SQLite', color: 'purple' },
+      { name: 'Zustand', color: 'orange' }
+    ] as Tag[],
   },
 ];
 
@@ -120,8 +126,8 @@ function App() {
               url={link.url}
               status={link.status}
               author={link.author}
-              requirements={link.requirements}
-              stack={link.stack}
+              type={link.type}
+              tags={link.tags}
             />
           ))}
         </main>
