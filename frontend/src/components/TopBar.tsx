@@ -1,18 +1,26 @@
 import { Plus, Home, NotebookText, Sparkles, LinkIcon } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 
 export function TopBar() {
+  const location = useLocation();
 
   return (
     <header className="flex items-center justify-between mb-8 pt-6">
       {/* Top Left Navigation */}
       <nav className="flex items-center h-12 rounded-lg bg-white dark:bg-[#161618] border border-gray-200 dark:border-[#2d2d33] overflow-hidden shadow-sm dark:shadow-none transition-colors duration-300">
         <div className="flex items-center px-2 h-full">
-          <button className="px-3 h-full text-gray-400 dark:text-[#9ca3af] hover:text-gray-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-colors flex items-center justify-center cursor-pointer">
+          <Link 
+            to="/" 
+            className={`px-3 h-full hover:text-gray-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-colors flex items-center justify-center cursor-pointer ${location.pathname === '/' ? 'text-gray-900 dark:text-white bg-black/5 dark:bg-white/5' : 'text-gray-400 dark:text-[#9ca3af]'}`}
+          >
             <Home size={18} />
-          </button>
-          <button className="px-3 h-full text-gray-400 dark:text-[#9ca3af] hover:text-gray-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-colors flex items-center justify-center cursor-pointer">
+          </Link>
+          <Link 
+            to="/about" 
+            className={`px-3 h-full hover:text-gray-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-colors flex items-center justify-center cursor-pointer ${location.pathname === '/about' ? 'text-gray-900 dark:text-white bg-black/5 dark:bg-white/5' : 'text-gray-400 dark:text-[#9ca3af]'}`}
+          >
             <NotebookText size={18} />
-          </button>
+          </Link>
         </div>
         
         <div className="w-[1px] h-6 bg-gray-200 dark:bg-[#2d2d33] transition-colors duration-300"></div>
