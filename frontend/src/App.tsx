@@ -1,5 +1,4 @@
 import { TopBar } from './components/TopBar';
-import { FloatingNav } from './components/FloatingNav';
 import { LinknestCard, type Tag } from './components/LinknestCard';
 import './index.css';
 
@@ -8,7 +7,7 @@ const DUMMY_LINKS = [
     id: 1, 
     title: 'AI-Powered Recipe Generator', 
     url: '#', 
-    status: 'Looking for collaborators', 
+    status: 'Public', 
     author: 'Harshit Parmar',
     type: { name: 'Repository', color: 'orange' } as Tag,
     tags: [
@@ -21,7 +20,7 @@ const DUMMY_LINKS = [
     id: 2, 
     title: 'Modern E-Commerce Dashboard', 
     url: '#', 
-    status: 'Looking for maintainers', 
+    status: 'Private', 
     author: 'Sarah Chen',
     type: { name: 'Design', color: 'blue' } as Tag,
     tags: [
@@ -132,8 +131,6 @@ function App() {
           ))}
         </main>
       </div>
-      
-      <FloatingNav />
     </div>
   )
 }
