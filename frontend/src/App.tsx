@@ -106,7 +106,7 @@ const DUMMY_LINKS = [
 
 function App() {
   return (
-    <div className="min-h-screen w-full flex flex-col items-center py-6 px-4 sm:px-8 relative dark:bg-black bg-[#08090b]">
+    <div className="min-h-screen w-full flex flex-col items-center py-2 px-4 sm:px-8 relative dark:bg-black bg-[#08090b]">
       {/* Container restricted to 5xl */}
       <div className="w-full max-w-5xl">
         <TopBar />
