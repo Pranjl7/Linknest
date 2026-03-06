@@ -1,49 +1,105 @@
-import { ExternalLink, Hash, LayoutGrid } from 'lucide-react';
+import { Eye, BadgeCheck } from 'lucide-react';
+
+export type TagColor = 'pink' | 'purple' | 'orange' | 'blue' | 'green';
+
+interface Requirement {
+  name: string;
+  color: TagColor;
+}
 
 interface LinknestCardProps {
   title: string;
   url: string;
-  type: string;
-  tags: string[];
+  status: string;
+  author: string;
+  requirements: Requirement[];
+  stack: string[];
 }
 
-export function LinknestCard({ title, url, type, tags }: LinknestCardProps) {
+const colorStyles: Record<TagColor, string> = {
+  pink: "text-[#ed64a6] border-[#ed64a6]/30 bg-[#ed64a6]/10",
+  purple: "text-[#9f7aea] border-[#9f7aea]/30 bg-[#9f7aea]/10",
+  orange: "text-[#ed8936] border-[#ed8936]/30 bg-[#ed8936]/10",
+  blue: "text-[#63b3ed] border-[#63b3ed]/30 bg-[#63b3ed]/10",
+  green: "text-[#48bb78] border-[#48bb78]/30 bg-[#48bb78]/10",
+};
+
+export function LinknestCard({ title, url, status, author, requirements, stack }: LinknestCardProps) {
   return (
-    <div className="relative group p-6 rounded-[2rem] bg-surface border border-border hover:border-gray-500 hover:shadow-[0_8px_30px_rgba(255,255,255,0.03)] transition-all duration-500 flex flex-col min-h-[220px] overflow-hidden">
-      {/* Subtle background glow effect on hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+    <div className="flex flex-col p-5 rounded-2xl bg-[#111214] border border-[#2d2d33] hover:border-[#4d4d55] transition-colors w-full relative group shadow-sm hover:shadow-lg dark:shadow-none">
       
-      <div className="flex justify-between items-start mb-4 relative z-10 w-full">
-        <h3 className="text-xl font-semibold text-text-primary line-clamp-2 leading-snug tracking-tight max-w-[85%] pr-4 group-hover:text-white transition-colors">
-          {title}
-        </h3>
-        <a 
-          href={url} 
-          target="_blank" 
-          rel="noreferrer"
-          className="p-2.5 rounded-full bg-white/5 text-text-secondary hover:text-white hover:bg-white/10 hover:scale-110 active:scale-95 transition-all duration-300 shrink-0"
-          aria-label="Visit link"
-        >
-          <ExternalLink size={20} />
-        </a>
+      {/* Top Header Section */}
+      <div className="flex justify-between items-start mb-4">
+        <div className="flex items-center gap-2 px-2.5 py-1 rounded-full border border-[#1c4028] bg-[#0c2415]">
+          <div className="w-1.5 h-1.5 rounded-full bg-[#34d399] shadow-[0_0_6px_#34d399]"></div>
+          <span className="text-[11px] font-medium text-[#34d399]">{status}</span>
+        </div>
+        <div className="px-2 py-0.5 rounded border border-[#2d2d33] bg-[#1a1a1f] text-[10px] font-bold tracking-wider text-gray-400">
+          OPEN
+        </div>
       </div>
 
-      <div className="mt-auto space-y-4 relative z-10">
-        <div className="flex items-center gap-2 text-sm text-text-secondary bg-black/20 w-fit px-3 py-1.5 rounded-xl border border-white/5">
-          <LayoutGrid size={16} className="opacity-70" />
-          <span className="capitalize font-medium">{type}</span>
-        </div>
+      {/* Title & Author */}
+      <h3 className="text-[1.15rem] font-bold text-white mb-2 leading-tight">
+        {title}
+      </h3>
+      <p className="text-xs text-gray-500 mb-6">
+        Posted by <span className="text-gray-300 font-medium">{author}</span>
+      </p>
 
-        <div className="flex flex-wrap gap-2 pt-1">
-          {tags.map((tag, idx) => (
-            <span 
-              key={idx} 
-              className="flex items-center px-3 py-1 text-xs font-semibold tracking-wide rounded-lg bg-white/5 text-text-secondary border border-transparent group-hover:border-white/10 group-hover:text-gray-300 transition-colors"
-            >
-              <Hash size={12} className="opacity-60 mr-1" />
-              {tag}
-            </span>
-          ))}
+      {/* Requirements */}
+      {requirements && requirements.length > 0 && (
+        <div className="mb-5">
+          <h4 className="text-[10px] uppercase tracking-[0.15em] font-bold text-gray-500 mb-2.5">
+            Requirements
+          </h4>
+          <div className="flex flex-wrap gap-2">
+            {requirements.map((req, idx) => (
+              <span 
+                key={idx} 
+                className={`px-2.5 py-1 rounded-md text-[11px] font-medium border ${colorStyles[req.color] || colorStyles.blue}`}
+              >
+                {req.name}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Stack */}
+      {stack && stack.length > 0 && (
+        <div className="mb-8">
+          <h4 className="text-[10px] uppercase tracking-[0.15em] font-bold text-gray-500 mb-2.5">
+            Stack
+          </h4>
+          <div className="flex flex-wrap gap-2">
+            {stack.map((item, idx) => (
+              <span 
+                key={idx} 
+                className="px-2.5 py-1 rounded-md text-[11px] font-medium text-gray-400 bg-[#16171a] border border-[#2d2d33]"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Bottom Actions */}
+      <div className="mt-auto">
+        <div className="h-[1px] w-full bg-[#2d2d33] mb-4"></div>
+        <div className="flex gap-3">
+          <a 
+            href={url}
+            className="flex-1 flex items-center justify-center gap-2 py-2 rounded-xl border border-[#2d2d33] bg-[#16171a] hover:bg-[#202126] text-[13px] font-medium text-gray-200 transition-colors"
+          >
+            <Eye size={15} className="text-gray-400 group-hover:text-white transition-colors" />
+            View Project
+          </a>
+          <button className="flex-1 flex items-center justify-center gap-2 py-2 rounded-xl border border-[#2d2d33] bg-[#16171a] hover:bg-[#202126] text-[13px] font-medium text-gray-200 transition-colors">
+            <BadgeCheck size={15} className="text-blue-500 group-hover:text-blue-400 transition-colors" />
+            Owner
+          </button>
         </div>
       </div>
     </div>
