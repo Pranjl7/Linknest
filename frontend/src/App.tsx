@@ -53,6 +53,55 @@ const DUMMY_LINKS = [
     ] as { name: string, color: TagColor }[],
     stack: ['Solidity', 'React', 'IPFS']
   },
+  { 
+    id: 5, 
+    title: 'Rust CLI Tool for Image Processing', 
+    url: '#', 
+    status: 'Seeking code review', 
+    author: 'Elena Rostova',
+    requirements: [
+      { name: 'Rust Developer', color: 'orange' },
+      { name: 'Performance Expert', color: 'blue' }
+    ] as { name: string, color: TagColor }[],
+    stack: ['Rust', 'Cargo', 'WASM']
+  },
+  { 
+    id: 6, 
+    title: 'Serverless Video Transcoding API', 
+    url: '#', 
+    status: 'Looking for maintainers', 
+    author: 'Michael Chang',
+    requirements: [
+      { name: 'Cloud Architect', color: 'green' },
+      { name: 'Backend Developer', color: 'purple' }
+    ] as { name: string, color: TagColor }[],
+    stack: ['AWS Lambda', 'FFmpeg', 'Node.js']
+  },
+  { 
+    id: 7, 
+    title: 'Figma to React Code Generator', 
+    url: '#', 
+    status: 'Active development', 
+    author: 'Sophie Martin',
+    requirements: [
+      { name: 'AST Expert', color: 'blue' },
+      { name: 'UI Engineer', color: 'pink' },
+      { name: 'Figma Plugin Dev', color: 'orange' }
+    ] as { name: string, color: TagColor }[],
+    stack: ['TypeScript', 'Babel', 'Figma API']
+  },
+  { 
+    id: 8, 
+    title: 'Local First Habit Tracker', 
+    url: '#', 
+    status: 'Looking for contributors', 
+    author: 'James Wilson',
+    requirements: [
+      { name: 'Mobile Developer', color: 'green' },
+      { name: 'UX Researcher', color: 'purple' }
+    ] as { name: string, color: TagColor }[],
+    stack: ['React Native', 'SQLite', 'Zustand']
+  },
 ];
 
 function App() {

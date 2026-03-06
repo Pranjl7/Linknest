@@ -1,4 +1,4 @@
-import { Github } from 'lucide-react';
+import { Github, Plus } from 'lucide-react';
 
 export function TopBar() {
   return (
@@ -12,11 +12,13 @@ export function TopBar() {
       </a>
       
       <div className="flex items-center gap-4">
-        <button className="px-6 py-2.5 rounded-2xl bg-surface border border-border text-sm font-medium text-text-primary hover:bg-surface-hover hover:border-gray-500 hover:-translate-y-0.5 transition-all duration-300 shadow-sm">
-          Create Link
+        <button className="flex items-center gap-1.5 px-5 py-2 rounded-full bg-white text-black text-sm font-bold hover:bg-gray-200 hover:scale-105 active:scale-95 transition-all duration-200 shadow-sm">
+          <Plus size={18} strokeWidth={2.5} />
+          <span>New Link</span>
         </button>
-        <button className="px-6 py-2.5 rounded-2xl bg-surface border border-border text-sm font-medium text-text-primary hover:bg-surface-hover hover:border-gray-500 hover:-translate-y-0.5 transition-all duration-300 shadow-sm">
-          Share Nest
+        <button className="flex items-center gap-1.5 px-5 py-2 rounded-full bg-surface border border-border text-text-primary text-sm font-bold hover:bg-surface-hover hover:border-gray-500 hover:scale-105 active:scale-95 transition-all duration-200 shadow-sm">
+          <Plus size={18} strokeWidth={2.5} />
+          <span>Share Nest</span>
         </button>
       </div>
     </header>
