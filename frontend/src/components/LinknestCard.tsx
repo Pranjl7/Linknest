@@ -34,9 +34,6 @@ export function LinknestCard({ title, url, status, author, type, tags }: Linknes
           <div className="w-1.5 h-1.5 rounded-full bg-[#34d399] shadow-[0_0_6px_#34d399]"></div>
           <span className="text-[11px] font-medium text-[#34d399]">{status}</span>
         </div>
-        <div className="px-2 py-0.5 rounded border border-[#2d2d33] bg-[#1a1a1f] text-[10px] font-bold tracking-wider text-gray-400">
-          OPEN
-        </div>
       </div>
 
       {/* Title & Author */}
@@ -49,11 +46,11 @@ export function LinknestCard({ title, url, status, author, type, tags }: Linknes
 
       {/* Type */}
       {type && (
-        <div className="mb-5">
-          <h4 className="text-[10px] uppercase tracking-[0.15em] font-bold text-gray-500 mb-2.5">
+        <div className="mb-5 flex items-center gap-3">
+          <h4 className="text-[10px] uppercase tracking-[0.15em] font-bold text-gray-500">
             Type
           </h4>
-          <span className={`px-2.5 py-1 rounded-md text-[11px] font-medium border inline-block ${colorStyles[type.color] || colorStyles.blue}`}>
+          <span className="px-2.5 py-1 rounded-md text-[11px] font-medium text-gray-400 bg-[#16171a] border border-[#2d2d33]">
             {type.name}
           </span>
         </div>
@@ -87,11 +84,11 @@ export function LinknestCard({ title, url, status, author, type, tags }: Linknes
             className="flex-1 flex items-center justify-center gap-2 py-2 rounded-xl border border-[#2d2d33] bg-[#16171a] hover:bg-[#202126] text-[13px] font-medium text-gray-200 transition-colors"
           >
             <Eye size={15} className="text-gray-400 group-hover:text-white transition-colors" />
-            View Project
+            View Link
           </a>
           <button className="flex-1 flex items-center justify-center gap-2 py-2 rounded-xl border border-[#2d2d33] bg-[#16171a] hover:bg-[#202126] text-[13px] font-medium text-gray-200 transition-colors">
             <BadgeCheck size={15} className="text-blue-500 group-hover:text-blue-400 transition-colors" />
-            Owner
+            Ask Ai
           </button>
         </div>
       </div>
