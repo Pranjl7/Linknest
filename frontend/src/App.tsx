@@ -57,13 +57,13 @@ const DUMMY_LINKS = [
 
 function App() {
   return (
-    <div className="min-h-screen w-full flex flex-col items-center py-6 px-4 sm:px-8 relative dark:bg-black bg-gray-50">
-      {/* Expanded container for 4-column capability */}
-      <div className="w-full max-w-[95rem]">
+    <div className="min-h-screen w-full flex flex-col items-center py-6 px-4 sm:px-8 relative dark:bg-black bg-[#08090b]">
+      {/* Container restricted to 5xl */}
+      <div className="w-full max-w-5xl">
         <TopBar />
 
-        {/* 4 Cards in a row (lg:grid-cols-4) */}
-        <main className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-32">
+        {/* 3 Cards in a row to fit within 5xl (md:grid-cols-3) */}
+        <main className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pb-32">
           {DUMMY_LINKS.map(link => (
             <LinknestCard 
               key={link.id}

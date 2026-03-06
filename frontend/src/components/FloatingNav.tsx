@@ -12,40 +12,53 @@ export function FloatingNav() {
     }
   }, [isLight]);
 
-  const navItems = [
-    { icon: <Home size={18} />, label: "Home" },
-    { icon: <NotebookText size={18} />, label: "Notes" },
-    { icon: <Github size={18} />, label: "GitHub" },
-    { icon: <Linkedin size={18} />, label: "LinkedIn" },
-    { icon: <Twitter size={18} />, label: "X" },
-    { icon: <Mail size={18} />, label: "Contact" },
-  ];
-
   return (
-    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none">
-      <nav className="flex items-center gap-1 p-1 rounded-full bg-surface/80 backdrop-blur-md border border-border shadow-lg pointer-events-auto">
-        {navItems.map((item, index) => (
-          <button 
-            key={index} 
-            className="p-2.5 rounded-full text-text-secondary hover:text-text-primary hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 active:scale-95 transition-all duration-200"
-            aria-label={item.label}
-            title={item.label}
-          >
-            {item.icon}
+    <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 pointer-events-none">
+      <nav className="flex items-center h-12 rounded-full bg-[#161618] border border-[#2d2d33] shadow-[0_8px_32px_rgba(0,0,0,0.6)] pointer-events-auto overflow-hidden">
+        
+        {/* Left Section (Home, Notes) */}
+        <div className="flex items-center px-2 h-full">
+          <button className="px-3 h-full text-[#9ca3af] hover:text-white hover:bg-white/5 transition-colors flex items-center justify-center">
+            <Home size={18} />
           </button>
-        ))}
+          <button className="px-3 h-full text-[#9ca3af] hover:text-white hover:bg-white/5 transition-colors flex items-center justify-center">
+            <NotebookText size={18} />
+          </button>
+        </div>
         
-        {/* Divider */}
-        <div className="w-[1px] h-6 bg-border mx-1"></div>
+        {/* First Divider */}
+        <div className="w-[1px] h-6 bg-[#2d2d33]"></div>
+
+        {/* Middle Section (Socials/Mail) */}
+        <div className="flex items-center px-2 h-full">
+          <button className="px-3 h-full text-[#9ca3af] hover:text-white hover:bg-white/5 transition-colors flex items-center justify-center">
+            <Github size={18} />
+          </button>
+          <button className="px-3 h-full text-[#9ca3af] hover:text-white hover:bg-white/5 transition-colors flex items-center justify-center">
+            <Linkedin size={18} />
+          </button>
+          <button className="px-3 h-full text-[#9ca3af] hover:text-white hover:bg-white/5 transition-colors flex items-center justify-center">
+            <Twitter size={18} />
+          </button>
+          <button className="px-3 h-full text-[#9ca3af] hover:text-white hover:bg-white/5 transition-colors flex items-center justify-center">
+            <Mail size={18} />
+          </button>
+        </div>
+
+        {/* Second Divider */}
+        <div className="w-[1px] h-6 bg-[#2d2d33]"></div>
         
-        <button 
-          onClick={() => setIsLight(!isLight)}
-          className="p-2.5 rounded-full text-text-secondary hover:text-text-primary hover:bg-black/5 dark:hover:bg-white/10 hover:scale-105 active:scale-95 transition-all duration-200"
-          aria-label="Toggle Theme"
-          title="Toggle Theme"
-        >
-          {isLight ? <Sun size={18} /> : <Moon size={18} />}
-        </button>
+        {/* Right Section (Theme Toggle) */}
+        <div className="flex items-center px-2 h-full">
+          <button 
+            onClick={() => setIsLight(!isLight)}
+            className="px-3 h-full text-[#9ca3af] hover:text-white hover:bg-white/5 transition-colors flex items-center justify-center group"
+            aria-label="Toggle Theme"
+          >
+            {isLight ? <Sun size={18} className="group-hover:rotate-45 transition-transform duration-300" /> : <Moon size={18} className="group-hover:-rotate-12 transition-transform duration-300" />}
+          </button>
+        </div>
+
       </nav>
     </div>
   );
