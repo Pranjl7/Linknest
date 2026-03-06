@@ -1,4 +1,4 @@
-import { Eye, BadgeCheck } from 'lucide-react';
+import { Eye, Sparkles, Link as LinkIcon } from 'lucide-react';
 
 export type TagColor = 'pink' | 'purple' | 'orange' | 'blue' | 'green';
 
@@ -44,6 +44,14 @@ export function LinknestCard({ title, url, status, author, type, tags }: Linknes
         Posted by <span className="text-gray-300 font-medium">{author}</span>
       </p>
 
+      {/* Post Link */}
+      <div className="mb-5 flex items-center gap-2 overflow-hidden">
+        <LinkIcon size={14} className="text-gray-500 shrink-0" />
+        <a href={url} target="_blank" rel="noreferrer" className="text-[12px] font-medium text-gray-400 hover:text-blue-400 hover:underline truncate transition-colors">
+          {url === '#' ? 'https://example.com/post/xyz-random-link' : url}
+        </a>
+      </div>
+
       {/* Type */}
       {type && (
         <div className="mb-5 flex items-center gap-3">
@@ -87,7 +95,7 @@ export function LinknestCard({ title, url, status, author, type, tags }: Linknes
             View Link
           </a>
           <button className="flex-1 flex items-center justify-center gap-2 py-2 rounded-xl border border-[#2d2d33] bg-[#16171a] hover:bg-[#202126] text-[13px] font-medium text-gray-200 transition-colors">
-            <BadgeCheck size={15} className="text-blue-500 group-hover:text-blue-400 transition-colors" />
+            <Sparkles size={15} className="text-blue-500 group-hover:text-blue-400 transition-colors" />
             Ask Ai
           </button>
         </div>
