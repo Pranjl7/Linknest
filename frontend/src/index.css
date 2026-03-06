@@ -2,13 +2,25 @@
 
 @theme {
   --font-sans: "Inter", "Outfit", system-ui, sans-serif;
-  --color-background-base: #0f1014;
-  --color-surface: #16181d;
-  --color-surface-hover: #1e2128;
-  --color-border: #262931;
-  --color-text-primary: #ededed;
-  --color-text-secondary: #a0a4b0;
-  --color-accent: #3b82f6; /* Adjust as needed */
+}
+
+:root {
+  --color-background-base: #0f172a; /* slate-900 */
+  --color-surface: #1e293b; /* slate-800 */
+  --color-surface-hover: #334155; /* slate-700 */
+  --color-border: #334155;
+  --color-text-primary: #f8fafc; /* slate-50 */
+  --color-text-secondary: #94a3b8; /* slate-400 */
+  --color-accent: #3b82f6; 
+}
+
+:root.light {
+  --color-background-base: #f8fafc; /* slate-50 */
+  --color-surface: #ffffff;
+  --color-surface-hover: #f1f5f9; /* slate-100 */
+  --color-border: #e2e8f0; /* slate-200 */
+  --color-text-primary: #0f172a; /* slate-900 */
+  --color-text-secondary: #64748b; /* slate-500 */
 }
 
 @layer base {
