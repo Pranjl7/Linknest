@@ -9,7 +9,6 @@ export function TopBar() {
           <span>New Link</span>
         </button>
         <button className="flex items-center gap-1.5 px-5 py-2 rounded-full bg-surface border border-border text-text-primary text-sm font-bold hover:bg-surface-hover hover:border-gray-500 hover:scale-105 active:scale-95 transition-all duration-200 shadow-sm">
-          <Plus size={18} strokeWidth={2.5} />
           <span>Share Nest</span>
         </button>
       </div>
