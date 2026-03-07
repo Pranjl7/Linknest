@@ -34,7 +34,7 @@ export function CreateLinkModal({ isOpen, onClose }: CreateLinkModalProps) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
       {/* Modal Container */}
-      <div className="bg-[#111214] border border-[#2d2d33] rounded-[2rem] w-full max-w-[500px] p-8 shadow-2xl relative text-gray-200 font-montserrat">
+      <div className="bg-[#08090b] border border-[#2d2d33] rounded-[2rem] w-full max-w-[500px] p-8 shadow-2xl relative text-gray-200 font-montserrat">
         
         {/* Close Button */}
         <button 
@@ -49,7 +49,7 @@ export function CreateLinkModal({ isOpen, onClose }: CreateLinkModalProps) {
           
           {/* Status Row */}
           <div className="flex items-center gap-4">
-            <span className="w-16 text-sm font-medium text-[#ed64a6] tracking-wide">status</span>
+            <span className="w-16 text-sm font-medium text-white tracking-wide">status</span>
             <div className="flex items-center gap-3 ml-2">
               <span className={`text-sm ${isPublic ? 'text-white' : 'text-gray-500'}`}>public</span>
               {/* Toggle Switch */}
@@ -61,7 +61,7 @@ export function CreateLinkModal({ isOpen, onClose }: CreateLinkModalProps) {
                   className={`w-4 h-4 rounded-full bg-white transition-transform ${isPublic ? 'translate-x-1' : 'translate-x-7'}`}
                   style={{
                     backgroundColor: isPublic ? 'transparent' : 'white',
-                    border: isPublic ? '2px solid #ed64a6' : 'none'
+                    border: isPublic ? '2px solid white' : 'none'
                   }}
                 />
               </button>
@@ -71,19 +71,19 @@ export function CreateLinkModal({ isOpen, onClose }: CreateLinkModalProps) {
 
           {/* Link Row */}
           <div className="flex items-center gap-4">
-            <span className="w-16 text-sm font-medium text-[#ed64a6] tracking-wide">link</span>
+            <span className="w-16 text-sm font-medium text-white tracking-wide">link</span>
             <input 
               type="text" 
               placeholder="%url"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
-              className="flex-1 bg-transparent border border-[#ed64a6] rounded-xl px-4 py-2 text-sm text-white placeholder-gray-500 outline-none focus:border-white transition-colors"
+              className="flex-1 bg-transparent border border-[#2d2d33] rounded-xl px-4 py-2 text-sm text-white placeholder-gray-500 outline-none focus:border-white transition-colors"
             />
           </div>
 
           {/* Type Row */}
           <div className="flex items-center gap-4">
-            <span className="w-16 text-sm font-medium text-[#ed64a6] tracking-wide">type</span>
+            <span className="w-16 text-sm font-medium text-white tracking-wide">type</span>
             <div className="flex gap-2 flex-wrap">
               {['document', 'tweet', 'video', 'image'].map((type) => (
                 <button
@@ -92,7 +92,7 @@ export function CreateLinkModal({ isOpen, onClose }: CreateLinkModalProps) {
                   className={`px-3 py-1 rounded-xl border text-sm transition-colors cursor-pointer ${
                     selectedType === type 
                       ? 'border-white text-white' 
-                      : 'border-[#ed64a6] text-gray-400 hover:text-gray-200'
+                      : 'border-[#2d2d33] text-gray-400 hover:text-gray-200'
                   }`}
                 >
                   {type}
@@ -103,20 +103,20 @@ export function CreateLinkModal({ isOpen, onClose }: CreateLinkModalProps) {
 
           {/* Title Row */}
           <div className="flex items-center gap-4">
-            <span className="w-16 text-sm font-medium text-[#ed64a6] tracking-wide">title</span>
+            <span className="w-16 text-sm font-medium text-white tracking-wide">title</span>
             <input 
               type="text" 
               placeholder="Give some title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="flex-1 bg-transparent border border-[#ed64a6] rounded-xl px-4 py-2 text-sm text-white placeholder-gray-500 outline-none focus:border-white transition-colors"
+              className="flex-1 bg-transparent border border-[#2d2d33] rounded-xl px-4 py-2 text-sm text-white placeholder-gray-500 outline-none focus:border-white transition-colors"
             />
           </div>
 
           {/* Tags Row */}
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-4">
-              <span className="w-16 text-sm font-medium text-[#ed64a6] tracking-wide">tags</span>
+              <span className="w-16 text-sm font-medium text-white tracking-wide">tags</span>
               <input 
                 type="text" 
                 placeholder="max 3 tags allowed"
@@ -124,7 +124,7 @@ export function CreateLinkModal({ isOpen, onClose }: CreateLinkModalProps) {
                 onChange={(e) => setTagInput(e.target.value)}
                 onKeyDown={handleTagKeyDown}
                 disabled={tags.length >= 3}
-                className="flex-1 bg-transparent border border-[#ed64a6] rounded-xl px-4 py-2 text-sm text-white placeholder-gray-500 outline-none focus:border-white transition-colors disabled:opacity-50"
+                className="flex-1 bg-transparent border border-[#2d2d33] rounded-xl px-4 py-2 text-sm text-white placeholder-gray-500 outline-none focus:border-white transition-colors disabled:opacity-50"
               />
             </div>
             
