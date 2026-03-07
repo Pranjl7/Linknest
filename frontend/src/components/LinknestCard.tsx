@@ -1,4 +1,4 @@
-import { Eye, Sparkles, Link as LinkIcon } from "lucide-react";
+import { Eye, Sparkles, Link as LinkIcon, Trash2 } from "lucide-react";
 import type { tagstype } from "../types/cardTypes";
 
 export type TagColor = "pink" | "purple" | "orange" | "blue" | "green";
@@ -37,7 +37,7 @@ export function LinknestCard({
   tags,
 }: LinknestCardProps) {
   return (
-    <div className="flex flex-col p-5 rounded-2xl bg-white dark:bg-[#111214] border border-gray-200 dark:border-[#2d2d33] hover:border-gray-300 dark:hover:border-[#4d4d55] transition-colors duration-300 w-full relative group shadow-sm hover:shadow-lg dark:shadow-none">
+    <div className="flex flex-col p-5 rounded-2xl bg-white dark:bg-[#111214] border border-gray-200 dark:border-[#2d2d33] transition-colors duration-300 w-full relative group shadow-sm hover:shadow-lg dark:shadow-none">
       {/* Top Header Section */}
       <div className="flex justify-between items-start mb-4">
         <div className="flex items-center gap-2 px-2.5 py-1 rounded-full border border-green-200 dark:border-[#1c4028] bg-green-50 dark:bg-[#0c2415] transition-colors duration-300">
@@ -46,6 +46,12 @@ export function LinknestCard({
             {status}
           </span>
         </div>
+        <button 
+          className="text-gray-400 hover:text-red-500 transition-colors p-1.5 rounded-md hover:bg-black/5 dark:hover:bg-white/5 cursor-pointer flex items-center justify-center opacity-0 group-hover:opacity-100"
+          aria-label="Delete link"
+        >
+          <Trash2 size={15} />
+        </button>
       </div>
 
       {/* Title & Author */}
