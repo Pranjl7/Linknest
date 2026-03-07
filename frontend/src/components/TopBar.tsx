@@ -1,5 +1,5 @@
 import { Plus, Home, NotebookText, Sparkles, LinkIcon, LogOut } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 export interface TopBarProps {
   onOpenCreateModal?: () => void;
@@ -30,15 +30,17 @@ export function TopBar({ onOpenCreateModal }: TopBarProps) {
         <div className="w-px h-6 bg-gray-200 dark:bg-[#2d2d33] transition-colors duration-300"></div>
 
         <div className="flex items-center px-2 h-full">
-          <button
-            className="px-3 h-full text-gray-400 dark:text-[#9ca3af] hover:text-blue-500 dark:hover:text-blue-400 hover:bg-black/5 dark:hover:bg-white/5 transition-colors flex items-center justify-center group cursor-pointer"
+          <NavLink
+          to={"/chatbot"}
+            className={({isActive} => `px-3 h-full text-gray-400 dark:text-[#9ca3af] hover:text-blue-500 dark:hover:text-blue-400 hover:bg-black/5 dark:hover:bg-white/5 transition-colors flex items-center justify-center group cursor-pointer $(isActive ? "text-gray-900 dark:text-white bg-black/5 dark:bg-white/5" : `text-gray-400 dark:text-[#9ca3af]`)`)}
+            
             aria-label="Ask AI"
           >
             <Sparkles
               size={18}
               className="transition-transform duration-300 group-hover:scale-110"
             />
-          </button>
+          </NavLink>
         </div>
 
         <div className="w-px h-6 bg-gray-200 dark:bg-[#2d2d33] transition-colors duration-300"></div>
