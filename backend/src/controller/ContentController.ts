@@ -4,11 +4,12 @@ import { Contentzodschema } from "../util/zodvalidation.js";
 import type { typeofCZS } from "../util/zodvalidation.js";
 import { Tags } from "../model/Tagmodel.js";
 import mongoose from "mongoose";
-import { Link } from "../model/Linkmodel.js";
 
 export async function viewcontent(req, res) {
   try {
-    const contents = await Content.find({}).populate("tags").populate("userid");
+    const contents = await Content.find({})
+      .populate({ path: "tags", select: "title" })
+      .populate({ path: "userid", select: "username" });
     res.status(200).json({
       success: true,
       message: contents,
@@ -55,7 +56,7 @@ export async function createcontent(req, res) {
       return;
     }
 
-    const { link, type, title, tags }: typeofCZS = req.body;
+    const { status, link, type, title, tags }: typeofCZS = req.body;
 
     const tagsid = await Promise.all(
       (tags ?? []).map(async (tag) => {
@@ -74,6 +75,7 @@ export async function createcontent(req, res) {
     ].map((tag) => new mongoose.Types.ObjectId(tag));
 
     await Content.create({
+      status,
       link,
       type,
       title,
@@ -92,7 +94,52 @@ export async function createcontent(req, res) {
         success: false,
         message: "Title already existed.",
       });
+      return;
     }
+
+    res.status(500).json({
+      success: false,
+      message: "Something went wrong, plz try again.",
+    });
+  }
+}
+
+export async function deletecontent(req, res) {
+  try {
+    const username = req.userid;
+    const existinguser = await User.findOne({ username });
+    if (!existinguser) {
+      res.status(401).json({
+        success: false,
+        message: "Unauthorized user.",
+      });
+      return;
+    }
+    const title = req.params.title;
+    const content = await Content.findOne({ title });
+    if (!content) {
+      res.status(404).json({
+        success: false,
+        message: "Content not found.",
+      });
+      return;
+    }
+
+    console.log(username);
+    if (existinguser._id.toString() !== content.userid.toString()) {
+      res.status(401).json({
+        success: false,
+        message: "Unauthorized user.",
+      });
+      return;
+    }
+    await Content.deleteOne({ _id: content._id });
+    res.status(200).json({
+      success: true,
+      message: "Content deleted successfully.",
+    });
+  } catch (error) {
+    console.log(error);
     res.status(500).json({
       success: false,
       message: "Something went wrong, plz try again.",

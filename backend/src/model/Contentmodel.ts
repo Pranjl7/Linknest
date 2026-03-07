@@ -5,6 +5,7 @@ import { User } from "./Usermodel.js";
 const Objectid = mongoose.Schema.Types.ObjectId;
 
 const ContentSchema = new mongoose.Schema({
+  status: { type: String, required: true },
   link: { type: String, required: true },
   type: {
     type: String,

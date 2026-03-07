@@ -14,6 +14,7 @@ export const Userzodschema = z.object({
 });
 
 export const Contentzodschema = z.object({
+  status: z.string(),
   link: z.string(),
   type: z.string(),
   title: z
