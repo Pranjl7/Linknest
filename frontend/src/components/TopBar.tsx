@@ -11,29 +11,29 @@ export function TopBar({ onOpenCreateModal }: TopBarProps) {
   return (
     <header className="flex items-center justify-between mb-8 pt-2">
       {/* Top Left Navigation */}
-      <nav className="flex items-center h-10 rounded-lg bg-white dark:bg-[#161618] border border-gray-200 dark:border-[#2d2d33] overflow-hidden shadow-sm dark:shadow-none transition-colors duration-300">
-        <div className="flex items-center px-1.5 h-full">
+      <nav className="flex items-center h-12 rounded-lg bg-white dark:bg-[#161618] border border-gray-200 dark:border-[#2d2d33] overflow-hidden shadow-sm dark:shadow-none transition-colors duration-300">
+        <div className="flex items-center px-2 h-full">
           <Link
             to="/"
-            className={`px-2.5 h-full hover:text-gray-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-colors flex items-center justify-center cursor-pointer ${location.pathname === "/" ? "text-gray-900 dark:text-white bg-black/5 dark:bg-white/5" : "text-gray-400 dark:text-[#9ca3af]"}`}
+            className={`px-3 h-full hover:text-gray-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-colors flex items-center justify-center cursor-pointer ${location.pathname === "/" ? "text-gray-900 dark:text-white bg-black/5 dark:bg-white/5" : "text-gray-400 dark:text-[#9ca3af]"}`}
           >
-            <Home size={17} />
+            <Home size={18} />
           </Link>
           <Link
             to="/about"
-            className={`px-2.5 h-full hover:text-gray-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-colors flex items-center justify-center cursor-pointer ${location.pathname === "/about" ? "text-gray-900 dark:text-white bg-black/5 dark:bg-white/5" : "text-gray-400 dark:text-[#9ca3af]"}`}
+            className={`px-3 h-full hover:text-gray-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-colors flex items-center justify-center cursor-pointer ${location.pathname === "/about" ? "text-gray-900 dark:text-white bg-black/5 dark:bg-white/5" : "text-gray-400 dark:text-[#9ca3af]"}`}
           >
-            <NotebookText size={17} />
+            <NotebookText size={18} />
           </Link>
         </div>
 
-        <div className="w-px h-5 bg-gray-200 dark:bg-[#2d2d33] transition-colors duration-300"></div>
+        <div className="w-px h-6 bg-gray-200 dark:bg-[#2d2d33] transition-colors duration-300"></div>
 
-        <div className="flex items-center px-1.5 h-full">
+        <div className="flex items-center px-2 h-full">
           <NavLink
             to={"/chatbot"}
             className={({ isActive }) =>
-              `px-2.5 h-full hover:text-blue-500 dark:hover:text-blue-400 hover:bg-black/5 dark:hover:bg-white/5 transition-colors flex items-center justify-center group cursor-pointer ${
+              `px-3 h-full hover:text-blue-500 dark:hover:text-blue-400 hover:bg-black/5 dark:hover:bg-white/5 transition-colors flex items-center justify-center group cursor-pointer ${
                 isActive
                   ? "text-gray-900 dark:text-white bg-black/5 dark:bg-white/5"
                   : "text-gray-400 dark:text-[#9ca3af]"
@@ -42,20 +42,20 @@ export function TopBar({ onOpenCreateModal }: TopBarProps) {
             aria-label="Ask AI"
           >
             <Sparkles
-              size={17}
+              size={18}
               className="transition-transform duration-300 group-hover:scale-110"
             />
           </NavLink>
         </div>
 
-        <div className="w-px h-5 bg-gray-200 dark:bg-[#2d2d33] transition-colors duration-300"></div>
+        <div className="w-px h-6 bg-gray-200 dark:bg-[#2d2d33] transition-colors duration-300"></div>
 
-        <div className="flex items-center px-1.5 h-full">
+        <div className="flex items-center px-2 h-full">
           <button
-            className="px-2.5 h-full text-gray-400 dark:text-[#9ca3af] hover:text-red-500 dark:hover:text-red-400 hover:bg-black/5 dark:hover:bg-white/5 transition-colors flex items-center justify-center group cursor-pointer"
+            className="px-3 h-full text-gray-400 dark:text-[#9ca3af] hover:text-red-500 dark:hover:text-red-400 hover:bg-black/5 dark:hover:bg-white/5 transition-colors flex items-center justify-center group cursor-pointer"
             aria-label="Logout"
           >
-            <LogOut size={17} className="transition-transform duration-300 group-hover:scale-110" />
+            <LogOut size={18} className="transition-transform duration-300 group-hover:scale-110" />
           </button>
         </div>
       </nav>
