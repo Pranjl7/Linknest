@@ -2,10 +2,10 @@ import { Eye, Sparkles, Link as LinkIcon } from "lucide-react";
 
 export type TagColor = "pink" | "purple" | "orange" | "blue" | "green";
 
-// export interface Tag {
-//   title: string;
-//   color: TagColor;
-// }
+interface tagstype {
+  id: string;
+  title: string;
+}
 
 interface LinknestCardProps {
   title: string;
@@ -13,7 +13,7 @@ interface LinknestCardProps {
   status: string;
   author: string;
   type: string;
-  tags: string[];
+  tags: tagstype[];
 }
 
 const colorStyles: Record<TagColor, string> = {
@@ -105,9 +105,9 @@ export function LinknestCard({
             {tags.map((tag, idx) => (
               <span
                 key={idx}
-                className={`px-2.5 py-1 rounded-md text-[11px] font-medium border ${colorStyles[getTagColor(tag)]}`}
+                className={`px-2.5 py-1 rounded-md text-[11px] font-medium border ${colorStyles[getTagColor(tag.title)]}`}
               >
-                {tag}
+                {tag.title}
               </span>
             ))}
           </div>
