@@ -1,7 +1,11 @@
 import { Plus, Home, NotebookText, Sparkles, LinkIcon, LogOut } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
-export function TopBar() {
+export interface TopBarProps {
+  onOpenCreateModal?: () => void;
+}
+
+export function TopBar({ onOpenCreateModal }: TopBarProps) {
   const location = useLocation();
 
   return (
@@ -44,16 +48,17 @@ export function TopBar() {
             className="px-3 h-full text-gray-400 dark:text-[#9ca3af] hover:text-red-500 dark:hover:text-red-400 hover:bg-black/5 dark:hover:bg-white/5 transition-colors flex items-center justify-center group cursor-pointer"
             aria-label="Logout"
           >
-            <LogOut
-              size={18}
-            />
+            <LogOut size={18} className="transition-transform duration-300 group-hover:scale-110" />
           </button>
         </div>
       </nav>
 
       {/* Top Right Actions */}
       <div className="flex items-center gap-4">
-        <button className="flex items-center gap-1.5 px-5 py-2 rounded-full bg-white text-black text-sm font-bold hover:bg-gray-200 hover:scale-100 active:scale-95 transition-all duration-200 shadow-sm cursor-pointer">
+        <button 
+          onClick={onOpenCreateModal}
+          className="flex items-center gap-1.5 px-5 py-2 rounded-full bg-white text-black text-sm font-bold hover:bg-gray-200 hover:scale-100 active:scale-95 transition-all duration-200 shadow-sm cursor-pointer"
+        >
           <Plus size={17} strokeWidth={2.5} />
           <span>New Link</span>
         </button>
