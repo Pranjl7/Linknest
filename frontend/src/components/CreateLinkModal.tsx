@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { X } from "lucide-react";
+import axios from "axios";
 
 interface CreateLinkModalProps {
   isOpen: boolean;
@@ -15,6 +16,38 @@ export function CreateLinkModal({ isOpen, onClose }: CreateLinkModalProps) {
   const [tags, setTags] = useState<string[]>([]);
 
   if (!isOpen) return null;
+
+  const handleSubmit = async () => {
+    try {
+      if (!url || !title) {
+        alert("Please fill in the required fields (link and title)");
+        return;
+      }
+      
+      const payload = {
+        title,
+        link: url,
+        type: selectedType,
+        tags,
+        status: isPublic ? 'public' : 'private'
+      };
+
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/content/create`,
+        payload,
+        {
+          withCredentials: true
+        }
+      );
+      
+      console.log(response.data.message);
+      onClose();
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+      alert("Something went wrong, plz try again.");
+    }
+  };
 
   const handleTagKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" || e.key === ",") {
@@ -150,9 +183,10 @@ export function CreateLinkModal({ isOpen, onClose }: CreateLinkModalProps) {
             </div>
           </div>
 
-          {/* Submit Button (Optional but UX friendly) */}
+          {/* Submit Button */}
           <div className="flex justify-end mt-4">
             <button 
+              onClick={handleSubmit}
               className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-white text-black font-bold text-sm hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer shadow-md"
             >
               Add Link

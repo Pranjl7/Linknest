@@ -1,11 +1,11 @@
 export function About() {
   return (
-    <div className="w-full flex pb-20">
-      <div className="border border-[#2d2d33] rounded-xl w-full min-h-[550px] flex overflow-hidden bg-[#111214] shadow-sm">
+    <div className="w-full flex-1 flex flex-col items-center justify-center pb-10">
+      <div className="border border-[#2d2d33] rounded-3xl w-full min-h-[50vh] flex overflow-hidden bg-[#111214] shadow-sm relative">
         
         {/* Middle Column (Content) */}
         <div className="w-full p-10 flex flex-col items-start text-left">
-          <h1 className="text-4xl text-white font-bold mb-10 w-full text-left">About Linknest</h1>
+          <h1 className="text-4xl text-white font-bold mb-10 w-full text-left font-archi">About Linknest</h1>
           <div className="text-neutral-500 text-sm md:text-md leading-relaxed space-y-6 w-full text-left font-medium">
             <p>
               Linknest is your ultimate destination for organizing, discovering, and sharing the best resources on the web. Whether you're a developer, designer, or just an avid learner, Linknest helps you build a curated library of links tailored to your specific needs.

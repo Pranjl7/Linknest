@@ -1,16 +1,8 @@
 import { Eye, Sparkles, Link as LinkIcon, Trash2 } from "lucide-react";
-import type { tagstype } from "../types/cardTypes";
+import type { LinknestCardProps } from "../types/cardTypes";
+import axios from 'axios'
 
 export type TagColor = "pink" | "purple" | "orange" | "blue" | "green";
-
-interface LinknestCardProps {
-  title: string;
-  url: string;
-  status: string;
-  author: string;
-  type: string;
-  tags: tagstype[];
-}
 
 const colorStyles: Record<TagColor, string> = {
   pink: "text-pink-600 dark:text-[#ed64a6] border-pink-200 dark:border-[#ed64a6]/30 bg-pink-50 dark:bg-[#ed64a6]/10",
@@ -36,6 +28,22 @@ export function LinknestCard({
   type,
   tags,
 }: LinknestCardProps) {
+
+  async function deletecontent(title:string){
+    try {
+      axios.delete(`${import.meta.env.VITE_API_URL}/content/delete/${title}`)
+      .then((response) => {
+        console.log(response.data.message)
+        alert(response.data.message)
+      }).catch((err) => {
+        console.log(err)
+        alert(err.response.data.message)
+      })
+    } catch (error) {
+      console.log(error)
+      alert("Something went wrong, plz try again.")
+    }
+  }
   return (
     <div className="flex flex-col p-5 rounded-2xl bg-white dark:bg-[#111214] border border-gray-200 dark:border-[#2d2d33] transition-colors duration-300 w-full relative group shadow-sm hover:shadow-lg dark:shadow-none">
       {/* Top Header Section */}
@@ -47,6 +55,7 @@ export function LinknestCard({
           </span>
         </div>
         <button 
+          onClick={()=>deletecontent(title)}
           className="text-gray-400 hover:text-red-500 transition-colors p-1.5 rounded-md hover:bg-black/5 dark:hover:bg-white/5 cursor-pointer flex items-center justify-center opacity-0 group-hover:opacity-100"
           aria-label="Delete link"
         >

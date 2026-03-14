@@ -1,27 +1,9 @@
 import axios from "axios";
 import { LinknestCard } from "../components/LinknestCard";
 import { useEffect, useState } from "react";
-
+import type { contenttype } from "../types/cardTypes";
+import Footer from "../components/Footer";
 export function Home() {
-  interface tagstype{
-    id: string,
-    title: string,
-  }
-
-  interface useridtype{
-    id: string,
-    
-  }
-
-  type contenttype = {
-    status: string;
-    id: string;
-    link: string;
-    type: string;
-    title: string;
-    tags: tagstype[];
-    userid: []
-  };
   const [contents, setContents] = useState<contenttype[]>([]);
 
   async function fetchcontent() {
@@ -42,18 +24,21 @@ export function Home() {
   }, []);
 
   return (
-    <main className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pb-20">
-      {contents.map((link, index) => (
-        <LinknestCard
-          key={index}
-          title={link.title}
-          url={link.link}
-          status={link.status}
-          author={"Pranjal"}
-          type={link.type}
-          tags={link.tags}
-        />
-      ))}
-    </main>
+    <>
+      <main className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pb-20">
+        {contents.map((link, index) => (
+          <LinknestCard
+            key={index}
+            title={link.title}
+            url={link.link}
+            status={link.status}
+            author={link.userid.username}
+            type={link.type}
+            tags={link.tags}
+          />
+        ))}
+      </main>
+      <Footer />
+    </>
   );
 }
