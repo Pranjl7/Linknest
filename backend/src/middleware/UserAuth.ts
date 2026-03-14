@@ -1,12 +1,11 @@
 import jwt from "jsonwebtoken";
 import { User } from "../model/Usermodel.js";
-import type { NextFunction } from "express";
 const JWT_SECRET = process.env.JWT_SECRET;
 
-const UserAuth = (req: Request, res: Response, next: NextFunction) => {
+const UserAuth = (req, res, next) => {
   try {
     // @ts-ignore
-    const token: string = req.cookies.token;
+    const token = req.cookies.token;
     jwt.verify(token, JWT_SECRET!, (err, decoded) => {
       if (err) {
         res.status(404).json({

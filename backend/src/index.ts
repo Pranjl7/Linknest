@@ -5,6 +5,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import connectdb from "./config/dbconnection.js";
 // routes import
+import ChatRoutes from "./routes/ChatRoutes.js"
 import UserRoutes from "./routes/UserRoutes.js";
 import ContentRoutes from "./routes/ContentRoutes.js";
 const app = express();
@@ -20,6 +21,7 @@ app.use(
 app.use(cookieParser());
 
 // routes
+app.use("/api/v1/chat", ChatRoutes)
 app.use("/api/v1/user", UserRoutes);
 app.use("/api/v1/content", ContentRoutes);
 
